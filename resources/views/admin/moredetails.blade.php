@@ -42,13 +42,18 @@
                      <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800 d-flex justify-content-between">Offers 
-                            <a href="{{url('/add_offer')}}" class="btn btn-outline-primary btn-lg  ">Add Offer</a>
+                         <h1 class="h3 mb-2 text-gray-800 d-flex justify-content-between">Welcome Message 
+                            <a href="{{url('/add_details')}}" class="btn btn-outline-primary btn-lg  ">Add Details</a>
                             
                         </h1>
 
                          {{-- success flash message--}}
                         @include('admin.success_msg')
+
+
+
+                      
+
 
 
                         {{-- table start --}}
@@ -62,13 +67,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>title</th>
-                                                    <th>Country</th>
                                                     <th>description</th>
-                                                    <th>Price</th>
-                                                    {{-- <th>Currency</th> --}}
-                                                    <th>Thumbnail</th>
-                                                    <th>Images</th>
-                                                    <th>No of images</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
                                                 </tr>
@@ -78,22 +77,9 @@
                                                 @foreach ($data as $data )
                                                 <tr>
                                                     <td>{{$data->title}}</td>
-                                                    <td>{{$data->country}}</td>
-                                                    <td>{{$data->description}} </td>
-                                                    <td>{{$data->price}}</td>
-                                                    {{-- <td>{{$data->currency}}</td> --}}
-                                                   
-                                                    <td>
-                                                        <img src="offer_images/{{ $data->thumbnail}}" alt=""  class="text-center" style=" width: 100px;
-                                                        height:100px ; margin-left: auto; margin-right: auto;" >
-                                                    </td>
-
-                                                    <td ><a href="{{url('/viewofferimages', $data->id)}}" class="btn btn-info">View images</a></td>
-                                                   
-                                                    <td>{{$data->images->count()}}</td>
-                                                   
-                                                    <td ><a href="{{url('/editoffer', $data->id)}}" class="btn btn-success">Edit</a></td>
-                                                    <td ><a href="{{url('/deleteoffer', $data->id)}}" class="btn btn-danger">Remove</a></td>
+                                                    <td>{!!$data->description!!} </td>
+                                                    <td ><a href="{{url('/editdetails', $data->id)}}" class="btn btn-success">Edit</a></td>
+                                                    <td ><a href="{{url('/deletedetails', $data->id)}}" class="btn btn-danger">Remove</a></td>
                                                 </tr>
                                                 @endforeach
 

@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('more_details', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('country')->nullable();
             $table->text('description')->nullable();
-            $table->string('price')->nullable();
-            // $table->string('currency')->nullable();
-            $table->string('thumbnail')->nullable();
-            
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offers');
+        Schema::dropIfExists('more_details');
     }
 };

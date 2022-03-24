@@ -7,12 +7,13 @@ use App\Models\Offer;
 use App\Models\Booking;
 use App\Models\Contact;
 use App\Models\AdminModel;
+use App\Models\MoreDetail;
 use Illuminate\Http\Request;
 use App\Models\Welcome_message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
 use AmrShawky\LaravelCurrency\Facade\Currency;
 
 
@@ -325,7 +326,7 @@ class AdminController extends Controller
             $data->country = $request->country;
             $data->description = $request->description;
             $data->price = $request->price;
-            $data->currency = $request->currency;
+            // $data->currency = $request->currency;
             $data->save();
 
 
@@ -470,7 +471,7 @@ class AdminController extends Controller
                     $data->country = $request->country;
                     $data->description = $request->description;
                     $data->price = $request->price;
-                    $data->currency = $request->currency;
+                    // $data->currency = $request->currency;
                     $data->save();
 
 
@@ -570,25 +571,92 @@ class AdminController extends Controller
 
 
 
-                            public function currency_conversion(Request $request){
-                                $converted = Currency::convert()
-                                ->from($request->from)
-                                ->to($request->to)
-                                ->amount($request->amount)
-                                ->round(2)
-                                ->get();
-                                return back()->with([
-                                    'conversion' => $request->amount . ' ' . $request->from . ' is equal to ' . $converted . ' ' . $request->to,
-                                    'amount' => $request->amount,
-                                    'from' => $request->from,
-                                    'to' => $request->to
-                                ]);
+                            // public function currency_conversion(Request $request){
+                            //     $converted = Currency::convert()
+                            //     ->from($request->from)
+                            //     ->to($request->to)
+                            //     ->amount($request->amount)
+                            //     ->round(2)
+                            //     ->get();
+                            //     return back()->with([
+                            //         'conversion' => $request->amount . ' ' . $request->from . ' is equal to ' . $converted . ' ' . $request->to,
+                            //         'amount' => $request->amount,
+                            //         'from' => $request->from,
+                            //         'to' => $request->to
+                            //     ]);
     
+                            //      }
+    
+
+
+
+                            // more details
+
+
+                            
+                                
+                         public function moredetails(){
+                       
+                                 $data = MoreDetail::all();
+                           
+                                 return view('admin.moredetails',compact('data'));
+                
+                             }
+
+
+                             public function add_details(){
+
+                                return view('admin.add_details');
+                
                                  }
-    
+
+                             
+                                 
+                                 public function detail_insert(Request $request){
+
+                                    $data= new MoreDetail();
+                        
+                        
+                                    $data->title = $request->title;
+                                    $data->description = $request->description;
+                                    $data->save();
+                        
+                                    return redirect('moredetails')->with('success','Details added successfully!');
+                        
+                        
+                                }
+
+
+                        
+             public function edit_details($id){
+
+                $data= MoreDetail::find($id);
+                return view("admin.edit_details", compact('data'));
+
+                 }
 
 
 
+                 public function edited_details(Request $request,$id){
+
+                    $data = MoreDetail::find($id);
+
+                    $data->title = $request->title;
+                    $data->description = $request->description;
+                    $data->save();
+
+                    return redirect('moredetails')->with('success','Details Updated successfully!');
+
+                     }
+                        
+
+                     public function delete_details($id){
+
+                        $data = MoreDetail::find($id);
+                        $data->delete();
+                          return redirect()->back()->with('success','Details deleted successfully!');
+            
+                         }
 
 
 }

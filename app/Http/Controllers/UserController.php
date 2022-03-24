@@ -7,6 +7,7 @@ use App\Models\Offer;
 use App\Models\Contact;
 use App\Mail\ContactUser;
 use App\Models\AdminModel;
+use App\Models\MoreDetail;
 use Illuminate\Http\Request;
 use App\Models\Welcome_message;
 use Illuminate\Support\Facades\Mail;
@@ -21,8 +22,9 @@ class UserController extends Controller
                 'userinfo' =>$user
             ];
             $offers = Offer::all();
+            $details = MoreDetail::all();
         }
-        return view('guest_user/user',compact('msg','offers'),$data);
+        return view('guest_user/user',compact('msg','offers','details'),$data);
     }
 
 

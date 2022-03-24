@@ -77,7 +77,7 @@
                                                 @foreach ($data as $data )
                                                 <tr>
                                                     <td>{{$data->title}}</td>
-                                                    <td>{{$data->description}} </td>
+                                                    <td>{!!$data->description!!} </td>
                                                     <td ><a href="{{url('/editmessage', $data->id)}}" class="btn btn-success">Edit</a></td>
                                                     <td ><a href="{{url('/deletemessage', $data->id)}}" class="btn btn-danger">Remove</a></td>
                                                 </tr>

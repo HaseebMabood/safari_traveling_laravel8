@@ -91,12 +91,12 @@
         	<h3>{{$msg->title}}</h3>
 
             <p>{!!$msg->description!!}</p>
-            <ul class="list-unstyled">
+            {{-- <ul class="list-unstyled">
             	<li>- 3 to 10 Years Kids @ 39 AED</li>
                 <li>- Join us at Direct Camp point only @ 39 AED</li>
                 <li>- Per person pickup & Drop by bus From Dubai / Sharjah @ 60 AED</li>
                 <li>Dubai's No.1 Company - Call us for Group Discount (+971- 55-828 90 14 )We are offering best family & kids deals.</li>
-            </ul>
+            </ul> --}}
             @endforeach
         </div><!--END OF WELCOME TEXT--->
 <div class="clearfix"></div>
@@ -111,10 +111,10 @@
                 <h4>
                     {{-- displaying currency --}}
 
-                    {{$off->currency}}
+                    {{-- {{$off->currency}} --}}
 
 
-                    {{$off->price}}/-</h4>
+                 Pkr   {{$off->price}}/-</h4>
             </div><!--END OF COL MD 6-->
 
             <div class="col-md-6 no_padding details">
@@ -133,24 +133,20 @@
 </div><!--END OF WELCOME-->
 <div class="container">
 <div class="bottom_detail text-center">
-	<h3>DESERT SAFARI DUBAI</h3>
-            <p>Desert Safari Dubai is a crazy Desert safari ride from Arabian Company that will bring you here and there in the sand hills. You will enjoy the Dune Bashing in the middle of the desert safari and you will get a chance to take photos and taking a gander at the delightful encompassing around you. After that, you proceed with the excursion and land into a camp to see the desert and walk in the desert, do the camel ride. Then you will go to the Camp for Amazing Traditional Entertainment and BBQ + Boofa Dinner with unlimited soft drinks. The Arabian Desert covers the majority of Arab Emirates. Desert Dubai known as largest desert in the world and also the hottest. The borders of the Desert include Dubai, Sharjah, Ajman, We know after your desert safari Dubai and dune bashing in your Dubai trip you will not forget it in all of your life, it is unforgettable journey. Most interesting word is not enough for Desert Safari Dubai , you can say it is Awesome exciting activity.</p>
-            <ul class="list-unstyled">
-            	<li>- 3 to 10 Years Kids @ 39 AED</li>
-                <li>- Join us at Direct Camp point only @ 39 AED</li>
-                <li>- Per person pickup & Drop by bus From Dubai / Sharjah @ 60 AED</li>
-                <li>Dubai's No.1 Company - Call us for Group Discount (+971- 55-828 90 14 )We are offering best family & kids deals.</li>
-            </ul>
+	
 
-            <h3>DESERT SAFARI NIGHTS</h3>
-            <p>Desert Safari Dubai is a crazy Desert safari ride from Arabian Company that will bring you here and there in the sand hills. You will enjoy the Dune Bashing in the middle of the desert safari and you will get a chance to take photos and taking a gander at the delightful encompassing around you. After that, you proceed with the excursion and land into a camp to see the desert and walk in the desert, do the camel ride. Then you will go to the Camp for Amazing Traditional Entertainment and BBQ + Boofa Dinner with unlimited soft drinks. The Arabian Desert covers the majority of Arab Emirates. Desert Dubai known as largest desert in the world and also the hottest. The borders of the Desert include Dubai, Sharjah, Ajman, We know after your desert safari Dubai and dune bashing in your Dubai trip you will not forget it in all of your life, it is unforgettable journey. Most interesting word is not enough for Desert Safari Dubai , you can say it is Awesome exciting activity.</p>
+    @foreach ($details as $d)
+            <h3>{!! $d->title !!}</h3>
+            <p>{!! $d->description !!}</p>
+
+    @endforeach
             <ul class="list-unstyled">
             	<li>- 3 to 10 Years Kids @ 39 AED</li>
                 <li>- Join us at Direct Camp point only @ 39 AED</li>
                 <li>- Per person pickup & Drop by bus From Dubai / Sharjah @ 60 AED</li>
                 <li>Dubai's No.1 Company - Call us for Group Discount (+971- 55-828 90 14 )We are offering best family & kids deals.</li>
             </ul>
-            <p>ment and BBQ + Boofa Dinner with unlimited soft drinks. The Arabian Desert covers the majority of Arab Emirates. Desert Dubai known as largest desert in the world and also the hottest. The borders of the Desert include Dubai, Sharjah, Ajman, We know after your desert safari Dubai and dune bashing in your Dubai trip you will not forget it in all of your life, it is unforgettable journey. Most interesting word is not enough for Desert Safari Dubai , you can say it is Awesome exciting activity.</p>
+            {{-- <p>ment and BBQ + Boofa Dinner with unlimited soft drinks. The Arabian Desert covers the majority of Arab Emirates. Desert Dubai known as largest desert in the world and also the hottest. The borders of the Desert include Dubai, Sharjah, Ajman, We know after your desert safari Dubai and dune bashing in your Dubai trip you will not forget it in all of your life, it is unforgettable journey. Most interesting word is not enough for Desert Safari Dubai , you can say it is Awesome exciting activity.</p> --}}
 </div><!--END OF BOTTOM DETAIL-->
 </div><!--END OF CONTAINER-->
 <div class="back_top"><a href="#top"><img src="{{asset('safari/images/back_top.png')}}" alt="" class="img-responsive" /></a></div><!--END OF BACK TOP-->

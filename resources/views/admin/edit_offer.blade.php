@@ -42,12 +42,22 @@
                      <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Update Message </h1>
+                        {{-- <h1 class="h3 mb-2 text-gray-800">Update Message </h1> --}}
                        
                          {{-- success flash message--}}
                         @include('admin.success_msg')
 
 
+                        {{--back button  --}}
+
+<a href="/offers" class="btn btn-outline-dark btn-lg  ">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+  </svg>
+      <b>Back</b>
+  </a>
+
+  {{-- end back button --}}
 
                         {{-- form start --}}
               
@@ -73,13 +83,37 @@
                             <textarea name="description" class="form-control">{{$data->description}}</textarea>
                           </div>
 
-                          <div class="form-group">
+                          {{-- <div class="form-group">
                             <label for="">Price</label>
-                            <input  type="num" name="price" value="{{$data->price}}"  class="form-control" required>                          </div>
+                            <input  type="num" name="price" value="{{$data->price}}"  class="form-control" required>   
+                           </div> --}}
 
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                           
+        
+                                    <input type="number" class = "form-control" name="price" id="myinput" value="{{$data->price}}" min="0"><br>
+        
+        
+        
+                                        <label for="" class="text-info"><b>In Dollars: </label>
+                                        <div id="dollarid" class="text-success"></div>
+        
+        
+                                        <label for="" class="text-info">In Pounds:</label>
+                                        <div id="poundid" class="text-success"></div>
+        
+        
+        
+                                        <label for="" class="text-info"><b>In Euros:</b> </label>
+                                        <div id="eurosid" class="text-success"></div>
+        
+                
+                                </div>
+        
+                            </div>
 
-
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="">Currency</label>
                                 <input  type="text" name="currency" value="{{$data->currency}}"  class="form-control" >
                                 
@@ -91,7 +125,7 @@
 
                                 </select>
                                 
-                            </div>
+                            </div> --}}
 
 
 
@@ -152,6 +186,28 @@
    @include('admin.logout_modal')
 
    @include('admin.adminscript')
+
+
+
+   <script>
+
+    const inserted = document.getElementById('myinput')
+
+    inserted.addEventListener('input',function(event)
+      {
+                let converted=event.target.value
+
+                let dollarValue=document.getElementById('dollarid')
+                dollarValue.innerHTML = (converted /181.30).toFixed(2);
+
+                let poundsValue=document.getElementById('poundid')
+                poundsValue.innerHTML = (converted /240.45).toFixed(2);
+
+                let euroValue=document.getElementById('eurosid')
+                euroValue.innerHTML = (converted /199.85).toFixed(2);
+       })
+
+</script>
 
 </body>
 

@@ -174,4 +174,30 @@ Route::get('about',[UserController::class,'aboutus'])->middleware('isUserLogged'
 
 
 //currency conversion at admin side
-Route::post('/currency_conversion',[AdminController::class,'currency_conversion'])->middleware('isUserLogged');
+// Route::post('/currency_conversion',[AdminController::class,'currency_conversion'])->middleware('isUserLogged');
+
+
+
+// More details started
+
+//input welcome message fields in admin dashboard
+Route::get('moredetails',[AdminController::class,'moredetails'])->middleware('isUserLogged');
+
+
+//Add add details fields in admin dashboard
+Route::get('add_details',[AdminController::class,'add_details'])->middleware('isUserLogged');
+
+//inserting welcome message fields in admin dashboard
+Route::post('detail_insert',[AdminController::class,'detail_insert'])->middleware('isUserLogged');
+
+//Delete welcome message in admin dashboard
+Route::get('deletedetails/{id}',[AdminController::class,'delete_details'])->middleware('isUserLogged');
+
+//Edit welcome details in admin dashboard
+Route::get('editdetails/{id}',[AdminController::class,'edit_details'])->middleware('isUserLogged');
+
+//Updated details in admin dashboard
+Route::post('details_updated/{id}',[AdminController::class,'edited_details'])->middleware('isUserLogged');
+
+
+// More details ended 
