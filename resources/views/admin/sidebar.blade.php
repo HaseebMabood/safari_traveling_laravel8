@@ -102,6 +102,15 @@
         </li>
 
 
+ <!-- Nav Item - About us Collapse Menu -->
+ <li class="nav-item">
+    <a class="nav-link collapsed" href="{{url('slider')}}">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Slider Images</span>
+    </a>
+</li>
+
+
 
 
     <!-- Heading -->

@@ -63,6 +63,11 @@
                         {{-- form start --}}
 
                         <div class="container col-md-12 text-black mt-5" >
+
+                             {{-- validation message --}}
+                        @include('admin.validation_msg')
+
+
                             <form action="{{url('/offer_insert')}}" method="post" enctype="multipart/form-data" >
 
                                 @csrf
@@ -70,18 +75,18 @@
 
                           <div class="form-group">
                             <label for="">Title</label>
-                            <input type="text" name="title" value="{{old('title')}}" placeholder="" class="form-control"  required>
+                            <input type="text" name="title" value="{{old('title')}}" placeholder="" class="form-control"  >
                           </div>
 
                           <div class="form-group">
                             <label for="">Country</label>
-                            <input type="text" name="country" value="{{old('country')}}" placeholder="" class="form-control"  required>
+                            <input type="text" name="country" value="{{old('country')}}" placeholder="" class="form-control"  >
                           </div>
 
                           <div class="form-group">
                             <label for="">Description</label>
 
-                            <textarea name="description" class="form-control"></textarea>
+                            <textarea name="description" class="form-control" >{{ old('description') }}</textarea>
                           </div>
 
 
@@ -112,7 +117,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Amount</label>
-                                    <input  type="text" name="amount" value="{{old('amount')}}" placeholder="1.00" class="form-control" required>
+                                    <input  type="text" name="amount" value="{{old('amount')}}" placeholder="1.00" class="form-control" >
                                 </div>
                             </div>
 
@@ -156,7 +161,7 @@
                             <div class="form-group">
                                 <label for="">Price</label>
                                 @if (session('conversion'))
-                                <input  type="text" value="{{ session('conversion') }}" placeholder="" class="form-control" required>
+                                <input  type="text" value="{{ session('conversion') }}" placeholder="" class="form-control" >
                                 @endif
                             </div> --}}
 
@@ -180,7 +185,7 @@
                                     <div class="form-group">
                                         <label for="">Price</label>
 
-                                        <input  type="num" value="{{ old('price') }}" placeholder="" class="form-control" required>
+                                        <input  type="num" value="{{ old('price') }}" placeholder="" class="form-control" >
 
                                     </div>
                                 </div>
@@ -215,7 +220,7 @@
                         <div class="col-md-4">
                    
 
-                            <input type="number" class = "form-control" name="price" id="myinput" placeholder="Enter price in pkr" min="0"><br>
+                            <input type="number" class = "form-control" name="price" id="myinput" placeholder="Enter price in pkr" min="0" value="{{old('price')}}"><br>
 
 
 
@@ -239,13 +244,13 @@
 
                           <div class="form-group mt-3">
                             <label for="">Thumbnail</label>
-                            <input type="file" name="thumbnail" class="form-control"  required>
+                            <input type="file" name="thumbnail" class="form-control"  >
                           </div>
 
 
                           <div class="form-group">
                             <label for="">Image</label>
-                            <input type="file" name="images[]" multiple  class="form-control"  required>
+                            <input type="file" name="images[]" multiple  class="form-control"  >
                           </div>
 
 

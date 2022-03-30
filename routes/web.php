@@ -200,4 +200,30 @@ Route::get('editdetails/{id}',[AdminController::class,'edit_details'])->middlewa
 Route::post('details_updated/{id}',[AdminController::class,'edited_details'])->middleware('isUserLogged');
 
 
-// More details ended 
+// More details ended
+
+
+// slider started
+
+Route::get('slider',[AdminController::class,'slider'])->middleware('isUserLogged');
+
+// Route::get('/slider', function () {
+//     return view('admin.slider');
+// });
+
+Route::get('add_slider',[AdminController::class,'add_slider'])->middleware('isUserLogged');
+
+
+Route::post('inserting_sliders',[AdminController::class,'inserting_sliders'])->middleware('isUserLogged');
+
+
+Route::get('edit_banner/{id}',[AdminController::class,'edit_banner'])->middleware('isUserLogged');
+
+
+Route::post('editing_banner/{id}',[AdminController::class,'editing_banner'])->middleware('isUserLogged');
+
+
+Route::get('delete_banner/{id}',[AdminController::class,'delete_banner'])->middleware('isUserLogged');
+
+//slider ended
+

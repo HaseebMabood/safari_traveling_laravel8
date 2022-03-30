@@ -42,7 +42,7 @@
                      <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        
+
 
                          {{-- success flash message--}}
                         @include('admin.success_msg')
@@ -58,10 +58,15 @@
                         {{-- end back button --}}
 
 
-
                         {{-- form start --}}
 
-                        <div class="container  text-black mt-5" >
+            <div class="container  text-black mt-5" >
+
+                            {{-- validation message --}}
+                        @include('admin.validation_msg')
+
+
+
                             <form action="{{url('/message_insert')}}" method="post"  >
 
                                 @csrf
@@ -69,15 +74,15 @@
 
                           <div class="form-group">
                             <label for="">Title</label>
-                            <input type="text" name="title" value="{{old('title')}}" placeholder="" class="form-control"  required>
+                            <input type="text" name="title" value="{{old('title')}}" placeholder="" class="form-control">
                           </div>
 
 
 
                             <div class="form-group">
                                 <label for="">Description</label>
-                        
-                                <textarea name="description" id="ck"></textarea>
+
+                                <textarea name="description" id="ck" ></textarea>
                               </div>
 
                               <input type="submit" value="Submit" class="btn btn-lg btn-success">

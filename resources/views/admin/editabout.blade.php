@@ -53,7 +53,7 @@
                              </a>
 
                              {{-- end back button --}}
-                            <a href="{{route('aboutus.create')}}" class="btn btn-outline-primary btn-lg  ">Add Content</a>
+                          
                             
                         </h1>
 
@@ -64,6 +64,10 @@
                            {{-- form start --}}
 
                            <div class="container  text-black mt-5" >
+
+                            {{-- validation message --}}
+                            @include('admin.validation_msg')
+                            
                             <form action="{{route('aboutus.update',$data->id)}}" method="post"  >
 
                                 @csrf

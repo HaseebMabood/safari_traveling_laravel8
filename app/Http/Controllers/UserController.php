@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Mail\ContactUser;
 use App\Models\AdminModel;
 use App\Models\MoreDetail;
+use App\Models\Slider_Image;
 use Illuminate\Http\Request;
 use App\Models\Welcome_message;
 use Illuminate\Support\Facades\Mail;
@@ -23,8 +24,10 @@ class UserController extends Controller
             ];
             $offers = Offer::all();
             $details = MoreDetail::all();
+            // fetching banners
+            $banner = Slider_Image::all();
         }
-        return view('guest_user/user',compact('msg','offers','details'),$data);
+        return view('guest_user/user',compact('msg','offers','details','banner'),$data);
     }
 
 
@@ -40,7 +43,9 @@ class UserController extends Controller
 
        //  contact
        public function contact(){
-        return view('guest_user/contact');
+        $banner = Slider_Image::all()->first(); //used to fetch a single first row and for last we use "last()"
+        
+        return view('guest_user/contact',compact('banner'));
     }
 
 
@@ -55,7 +60,8 @@ class UserController extends Controller
 
     public function gallery(){    
         $data = Offer::all();
-        return view('guest_user.show_gallery',compact('data'));
+        $banner = Slider_Image::all();
+        return view('guest_user.show_gallery',compact('data','banner'));
     }
 
 
@@ -89,7 +95,8 @@ class UserController extends Controller
 
     public function aboutus(){    
         $data = About::all();
-        return view('guest_user.aboutus',compact('data'));
+        $banner = Slider_Image::all();
+        return view('guest_user.aboutus',compact('data','banner'));
     }
 
 

@@ -8,11 +8,12 @@ use App\Models\Booking;
 use App\Models\Contact;
 use App\Models\AdminModel;
 use App\Models\MoreDetail;
+use App\Models\Slider_Image;
 use Illuminate\Http\Request;
 use App\Models\Welcome_message;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use AmrShawky\LaravelCurrency\Facade\Currency;
 
@@ -171,7 +172,7 @@ class AdminController extends Controller
                 $data = Booking::all();
             }
 
-            
+
               return view('admin.showbooking',compact('data'));
 
   }
@@ -216,6 +217,11 @@ class AdminController extends Controller
                  //  Inserting welcome message in admin dashboard
          public function inserting_msg(Request $request){
 
+            $request->validate([
+                'title' => 'required',
+                'description' => 'required'
+            ]);
+
             $data= new Welcome_message();
 
 
@@ -251,6 +257,11 @@ class AdminController extends Controller
 
                  public function edited_message(Request $request,$id){
 
+                    $request->validate([
+                        'title' => 'required',
+                        'description' => 'required'
+                    ]);
+
                     $data = Welcome_message::find($id);
 
                     $data->title = $request->title;
@@ -281,7 +292,7 @@ class AdminController extends Controller
             else{
                 $data = Offer::all();
             }
-             
+
              return view('admin.input_offers',compact('data'));
          }
 
@@ -300,11 +311,14 @@ class AdminController extends Controller
 
 
 
-            // $request->validate([
-
-            //     'image' => 'required | image',
-
-            // ]);
+            $request->validate([
+                'title' => 'required',
+                'country' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'thumbnail' => 'required | image',
+                'images' => 'required | image'
+            ]);
             $data= new Offer();
 
 
@@ -431,6 +445,8 @@ class AdminController extends Controller
 
              public function edit_offer($id){
 
+
+
                 $data= Offer::find($id);
 
                 return view("admin.edit_offer", compact('data'));
@@ -442,14 +458,19 @@ class AdminController extends Controller
 
                  public function edited_offer(Request $request,$id){
 
+                    
+                $request->validate([
+                    'title' => 'required',
+                    'country' => 'required',
+                    'description' => 'required',
+                    'price' => 'required',
+                    'thumbnail' => 'image',
+                    'images' => 'image'
+                ]);
+
+
+
                     $data = Offer::find($id);
-
-                     // $request->validate([
-
-            //     'image' => 'required | image',
-
-            // ]);
-
 
 
             $thumbnail = $request->thumbnail;
@@ -553,7 +574,7 @@ class AdminController extends Controller
 
                         }
 
-                       
+
                         return view("admin.user_messages", compact('dataa'));
 
                          }
@@ -584,50 +605,58 @@ class AdminController extends Controller
                             //         'from' => $request->from,
                             //         'to' => $request->to
                             //     ]);
-    
+
                             //      }
-    
+
 
 
 
                             // more details
 
 
-                            
-                                
+
+
                          public function moredetails(){
-                       
+
                                  $data = MoreDetail::all();
-                           
+
                                  return view('admin.moredetails',compact('data'));
-                
+
                              }
 
 
                              public function add_details(){
 
                                 return view('admin.add_details');
-                
+
                                  }
 
-                             
-                                 
+
+
                                  public function detail_insert(Request $request){
 
+                                    $request->validate([
+    
+                                        'title' => 'required',
+                                        'description' => 'required',
+                                      
+                                    ]);
+
+
                                     $data= new MoreDetail();
-                        
-                        
+
+
                                     $data->title = $request->title;
                                     $data->description = $request->description;
                                     $data->save();
-                        
+
                                     return redirect('moredetails')->with('success','Details added successfully!');
-                        
-                        
+
+
                                 }
 
 
-                        
+
              public function edit_details($id){
 
                 $data= MoreDetail::find($id);
@@ -639,6 +668,14 @@ class AdminController extends Controller
 
                  public function edited_details(Request $request,$id){
 
+                    $request->validate([
+    
+                        'title' => 'required',
+                        'description' => 'required',
+                      
+                    ]);
+                    
+
                     $data = MoreDetail::find($id);
 
                     $data->title = $request->title;
@@ -648,15 +685,136 @@ class AdminController extends Controller
                     return redirect('moredetails')->with('success','Details Updated successfully!');
 
                      }
-                        
+
 
                      public function delete_details($id){
 
                         $data = MoreDetail::find($id);
                         $data->delete();
                           return redirect()->back()->with('success','Details deleted successfully!');
-            
+
                          }
+
+
+
+
+                        //  Bannner slider started
+
+
+                        public function slider(){
+
+                            $data = Slider_Image::all();
+                            return view('admin.slider',compact('data'));
+
+                             }
+
+
+                         public function add_slider(){
+
+
+                            return view('admin.addslider');
+
+                             }
+
+
+                             public function inserting_sliders(Request $request){
+
+
+
+                                // $request->validate([
+
+                                //     'image' => 'required | image',
+
+                                // ]);
+
+
+                                // now storing multiple images
+                                if ($request->hasfile('images')) {
+
+                                        foreach($request->file('images') as $img){
+
+                                            // $name = time().'.'. $img->getClientOriginalExtension();
+
+                                            $name = time().rand(1,1000).'.'.$img->extension();
+
+                                            $img->move(public_path('slider_images'), $name);
+
+                                            Slider_Image::create([
+
+                                                'slider_img' =>$name
+
+                                            ]);
+                                            // dd('osho'); //working
+
+                                        }
+
+
+
+                                }
+
+
+
+
+                                return redirect('slider')->with('success','Banner(s) added successfully!');
+
+
+                            }
+
+
+
+                            public function edit_banner($id){
+
+                                $data= Slider_Image::find($id);
+
+                                return view("admin.editbanner", compact('data'));
+
+                                 }
+
+
+                                //  uupdating banner
+
+                                public function editing_banner(Request $request,$id){
+
+                                    $data = Slider_Image::find($id);
+
+                                    // $request->validate([
+
+                           //     'image' => 'required | image',
+
+                           // ]);
+
+
+
+                           $image = $request->image;
+
+                           if ($image) {
+
+                               $imagename = time().'.'. $image->getClientOriginalExtension();
+
+                               $request->image->move('slider_images', $imagename);
+
+                               $data->slider_img = $imagename;
+                               // dd('osho');
+
+                           }
+                                   $data->save();
+                                   return redirect()->back()->with('success','Banner Updated successfully!');
+
+                                     }
+
+
+
+                                    //  Deleting banner
+
+                                    public function delete_banner($id){
+
+                                        $data = Slider_Image::find($id);
+                                        $data->delete();
+                                          return redirect()->back()->with('error','Banner deleted successfully!');
+
+                                         }
+
+
 
 
 }

@@ -36,6 +36,14 @@ class AboutUs extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+    
+            'description' => 'required',
+          
+        ]);
+
+
         $data= new About();
 
 
@@ -78,6 +86,13 @@ class AboutUs extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+    
+            'description' => 'required',
+          
+        ]);
+
+         
         $data = About::find($id);
 
         $data->description = $request->description;

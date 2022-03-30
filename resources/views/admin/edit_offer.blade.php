@@ -62,6 +62,11 @@
                         {{-- form start --}}
               
                         <div class="container col-md-8 text-black mt-5" >
+
+                             {{-- validation message --}}
+                             @include('admin.validation_msg')
+
+
                             <form action="{{url('/offer_updated',$data->id)}}" method="post" enctype="multipart/form-data" >
 
                                 @csrf

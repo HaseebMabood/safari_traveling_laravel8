@@ -65,6 +65,12 @@
                         {{-- form start --}}
               
                         <div class="container col-lg-6 text-black mt-5" >
+
+                           {{-- validation message --}}
+                        @include('admin.validation_msg')
+
+
+
                             <form action="{{url('/message_updated',$data->id)}}" method="post"  >
                     
                                 @csrf
@@ -72,7 +78,7 @@
                     
                           <div class="form-group">
                             <label for="">Title</label>
-                            <input type="text" name="title" value="{{$data->title}}" placeholder="" class="form-control"  required>
+                            <input type="text" name="title" value="{{$data->title}}" placeholder="" class="form-control"  >
                           </div>
                     
                           

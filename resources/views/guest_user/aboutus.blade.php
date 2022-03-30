@@ -51,9 +51,9 @@
 <div class="banner_area">
 <div  id="top" class="callbacks_container">
 			      <ul class="rslides" id="slider4">
-			        <li><img src="{{asset('safari/images/banner.jpg')}}" alt="" class="img-responsive" /></li>
-                     <li><img src="{{asset('safari/images/banner2.jpg')}}" alt="" class="img-responsive" /></li>
-                     <li><img src="{{asset('safari/images/banner3.jpg')}}" alt="" class="img-responsive" /></li>
+                    @foreach ($banner as $banner)
+                    <li><img src="slider_images/{{ $banner->slider_img}}" alt="" class="img-responsive" /></li>
+                    @endforeach
 			      </ul>
         </div><!--END OF ON BANNER BOX-->
 

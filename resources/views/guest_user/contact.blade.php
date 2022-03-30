@@ -33,8 +33,11 @@
        
     </div><!--END OF ROW-->
 </div><!--END OF CONTAINER-->
-<div class="banner_area">                
-<img src="{{asset('safari/images/inner.jpg')}}" alt="" class="img-responsive" /></li>      
+<div class="banner_area">     
+   
+    <img src="slider_images/{{ $banner->slider_img}}" alt="" class="img-responsive" /></li>
+     
+      
 </div><!--END OF BANNER AREA-->
 <div class="clearfix"></div>
 

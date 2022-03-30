@@ -55,7 +55,7 @@
 
                              {{-- end back button --}}
                              
-                            <a href="{{route('aboutus.create')}}" class="btn btn-outline-primary btn-lg  ">Add Content</a>
+                          
                             
                         </h1>
 
@@ -66,6 +66,10 @@
                            {{-- form start --}}
 
                            <div class="container  text-black mt-5" >
+
+                                {{-- validation message --}}
+                                @include('admin.validation_msg')
+
                             <form action="{{route('aboutus.store')}}" method="post"  >
 
                                 @csrf
@@ -75,7 +79,7 @@
                             <div class="form-group">
                                 <label for="">Description</label>
                         
-                                <textarea name="description" id="ck"></textarea>
+                                <textarea name="description" id="ck">{{old('description')}}</textarea>
                               </div>
 
                               <input type="submit" value="Submit" class="btn btn-lg btn-success">
