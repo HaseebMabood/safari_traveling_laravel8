@@ -458,7 +458,7 @@ class AdminController extends Controller
 
                  public function edited_offer(Request $request,$id){
 
-                    
+
                 $request->validate([
                     'title' => 'required',
                     'country' => 'required',
@@ -636,10 +636,10 @@ class AdminController extends Controller
                                  public function detail_insert(Request $request){
 
                                     $request->validate([
-    
+
                                         'title' => 'required',
                                         'description' => 'required',
-                                      
+
                                     ]);
 
 
@@ -669,12 +669,12 @@ class AdminController extends Controller
                  public function edited_details(Request $request,$id){
 
                     $request->validate([
-    
+
                         'title' => 'required',
                         'description' => 'required',
-                      
+
                     ]);
-                    
+
 
                     $data = MoreDetail::find($id);
 

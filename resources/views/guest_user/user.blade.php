@@ -65,14 +65,14 @@
 
 <div class="banner_area">
 <div  id="top" class="callbacks_container">
-        
+
         <ul class="rslides" id="slider4">
             @foreach ($banner as $banner)
             <li><img src="slider_images/{{ $banner->slider_img}}" alt="" class="img-responsive" /></li>
             @endforeach
           </ul>
-        
-			     
+
+
         </div><!--END OF ON BANNER BOX-->
 
 
@@ -136,7 +136,7 @@
 </div><!--END OF WELCOME-->
 <div class="container">
 <div class="bottom_detail text-center">
-	
+
 
     @foreach ($details as $d)
             <h3>{!! $d->title !!}</h3>
@@ -160,9 +160,9 @@
             	<img src="{{asset('safari/images/footer_logo.png')}}" alt="" class="img-responsive" />
                 <ul class="list-unstyled">
                 	<li>8/27 Cathey House, 7th Floor, Silom,</li>
-                    <li>Bangrak, Bangkok 10500, THAILAND</li>
+                    <li>Dubai, abc 10500</li>
                     <li>Tel: +662 696 8770 (10 channels)</li>
-                    <li>E-mail: ambika@ambikatours.com</li>
+                    <li>E-mail: dubaisafari@dubaitours.com</li>
                 </ul>
             </div><!--END OF FOOTER LEFT-->
         </div><!--EMD OF COL MD 3-->
@@ -192,7 +192,7 @@
                     <li><a href="#">Sitemap</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
-                <p>&copy; Ambika tours all rights reserved</p>
+                <p>&copy; Dubai Safari all rights reserved</p>
             </div><!--END OF LINKS-->
         </div><!--END OF COL MD 9-->
     </div><!--END OF CONTAINER0-->

@@ -69,23 +69,23 @@
                         <a href="{{url('/delete_multi',$image->id)}}" class="btn btn-danger">delete</a>
                         <img src="/offer_images/{{ $image->images}}" alt=""  class="text-center" style=" width: 100px;
                         height:100px ; margin-left: auto; margin-right: auto;" >
-                        
-    
+
+
                         @endforeach --}}
-                     
-                     
-                     
+
+
+
                 <div class="list row">
-                      
+
                     @foreach ($images as $image)
-                       
+
                             <div class="col-md-6">
-                
-                                              
+
+
                                 <div class="row ">
-                                    <div class="card d-flex justify-content-between" style="width: 18rem;">
+                                    <div class="card d-flex justify-content-between" style="width: 18rem; margin-left:50px">
                                         <img src="/offer_images/{{ $image->images}}" alt=""  class="text-center" style=" width: auto;
-                                        height:auto ; " >
+                                        height:230px ; " >
                                         <div class="card-body">
                                         <h5 class="card-title">{{$data->title}}</h5>
                                         <a href="{{url('/delete_multi',$image->id)}}" class="btn btn-danger">delete</a>
@@ -93,13 +93,13 @@
                                         </div>
                                     </div>
                                  </div><br>
-                            
-                    
+
+
                             </div><!--END OF COL MD 6-->
-                        
-                            
+
+
                     @endforeach
-               
+
                 </div>
 
 
